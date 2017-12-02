@@ -6,7 +6,9 @@ use Nette\Utils\ArrayHash;
 use Nette\Utils\Json;
 use Nette\Utils\Strings;
 
-class BaseEntity extends \Nette\Object {
+class BaseEntity {
+
+    use \Nette\SmartObject;
 
     const INVERT_NAMES = true;
 
