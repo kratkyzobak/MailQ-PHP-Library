@@ -3,6 +3,10 @@
 namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
+
+/**
+ * @property string $email
+ */
 class EmailAddressEntity  extends BaseEntity {
     
     /**

@@ -4,6 +4,9 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property SenderEmailEntity[] $emails
+ */
 class SenderEmailsEntity extends BaseEntity
 {
 
@@ -12,13 +15,13 @@ class SenderEmailsEntity extends BaseEntity
 	 *
 	 * @in
 	 * @out
-	 * @var SenderEmailEntity
+	 * @var SenderEmailEntity[]
 	 * @collection
 	 */
 	private $emails;
 
 	/**
-	 * @return SenderEmailEntity
+	 * @return SenderEmailEntity[]
 	 */
 	public function getEmails()
 	{
@@ -26,7 +29,7 @@ class SenderEmailsEntity extends BaseEntity
 	}
 
 	/**
-	 * @param SenderEmailEntity $emails
+	 * @param SenderEmailEntity[] $emails
 	 * @return SenderEmailsEntity
 	 */
 	public function setEmails($emails)

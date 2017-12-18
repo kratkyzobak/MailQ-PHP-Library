@@ -4,6 +4,16 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $username
+ * @property string $surname
+ * @property string $phone
+ * @property string $email
+ * @property string $position
+ * @property string $testEmail
+ * @property LinkEntity[] $companies
+ */
 class UserEntity extends BaseEntity
 {
 
@@ -60,7 +70,7 @@ class UserEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var LinkEntity
+	 * @var LinkEntity[]
 	 * @collection
 	 */
 	private $companies;
@@ -192,7 +202,7 @@ class UserEntity extends BaseEntity
 	}
 
 	/**
-	 * @return LinkEntity
+	 * @return LinkEntity[]
 	 */
 	public function getCompanies()
 	{
@@ -200,7 +210,7 @@ class UserEntity extends BaseEntity
 	}
 
 	/**
-	 * @param LinkEntity $companies
+	 * @param LinkEntity[] $companies
 	 * @return UserEntity
 	 */
 	public function setCompanies($companies)

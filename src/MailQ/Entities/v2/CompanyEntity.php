@@ -4,6 +4,16 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $name
+ * @property string $apiKey
+ * @property string $defaultSendAs
+ * @property string $defaultSenderEmail
+ * @property LinkEntity[] $users
+ * @property LinkEntity[] $senderEmails
+ * @property LinkEntity[] $recipientsLists
+ */
 class CompanyEntity extends BaseEntity
 {
 
@@ -45,7 +55,7 @@ class CompanyEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var LinkEntity
+	 * @var LinkEntity[]
 	 * @collection
 	 */
 	private $users;
@@ -53,7 +63,7 @@ class CompanyEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var LinkEntity
+	 * @var LinkEntity[]
 	 * @collection
 	 */
 	private $senderEmails;
@@ -61,7 +71,7 @@ class CompanyEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var LinkEntity
+	 * @var LinkEntity[]
 	 * @collection
 	 */
 	private $recipientsLists;
@@ -157,7 +167,7 @@ class CompanyEntity extends BaseEntity
 	}
 
 	/**
-	 * @return LinkEntity
+	 * @return LinkEntity[]
 	 */
 	public function getUsers()
 	{
@@ -165,7 +175,7 @@ class CompanyEntity extends BaseEntity
 	}
 
 	/**
-	 * @param LinkEntity $users
+	 * @param LinkEntity[] $users
 	 * @return CompanyEntity
 	 */
 	public function setUsers($users)
@@ -175,7 +185,7 @@ class CompanyEntity extends BaseEntity
 	}
 
 	/**
-	 * @return LinkEntity
+	 * @return LinkEntity[]
 	 */
 	public function getSenderEmails()
 	{
@@ -193,7 +203,7 @@ class CompanyEntity extends BaseEntity
 	}
 
 	/**
-	 * @return LinkEntity
+	 * @return LinkEntity[]
 	 */
 	public function getRecipientsLists()
 	{

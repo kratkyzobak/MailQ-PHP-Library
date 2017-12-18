@@ -4,6 +4,9 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property SmsResultEntity[] $results
+ */
 class SmsBatchResultEntity extends BaseEntity
 {
 
@@ -11,13 +14,13 @@ class SmsBatchResultEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var SmsResultEntity
+	 * @var SmsResultEntity[]
 	 * @collection
 	 */
 	private $results;
 
 	/**
-	 * @return SmsResultEntity
+	 * @return SmsResultEntity[]
 	 */
 	public function getResults()
 	{
@@ -25,7 +28,7 @@ class SmsBatchResultEntity extends BaseEntity
 	}
 
 	/**
-	 * @param SmsResultEntity $results
+	 * @param SmsResultEntity[] $results
 	 * @return SmsBatchResultEntity
 	 */
 	public function setResults($results)

@@ -4,6 +4,14 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $toNumber
+ * @property array $data
+ * @property string $state
+ * @property \DateTime $sent
+ * @property string $message
+ */
 class SmsEntity extends BaseEntity
 {
 

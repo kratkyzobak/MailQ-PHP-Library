@@ -4,6 +4,10 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property bool $start
+ * @property bool $stop
+ */
 class NewsletterCommandEntity extends BaseEntity {
     
     /**

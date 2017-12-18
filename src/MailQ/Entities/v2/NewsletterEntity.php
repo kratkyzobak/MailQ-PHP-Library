@@ -4,6 +4,28 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $name
+ * @property string $code
+ * @property string $subject
+ * @property string $sendAs
+ * @property string $senderEmail
+ * @property string $status
+ * @property \DateTime $from
+ * @property \DateTime $to
+ * @property bool $automaticTime
+ * @property bool $unlimited
+ * @property integer $recipientsListId
+ * @property integer $dataPersistence
+ * @property string $campaign
+ * @property string $csvUrl
+ * @property string $templateUrl
+ * @property string $unsubscribeTemplateUrl
+ * @property AttachmentEntity[] $attachments
+ * @property LinkEntity $company
+ * @property string $text
+ */
 class NewsletterEntity extends BaseEntity {
 
     /**
@@ -128,7 +150,7 @@ class NewsletterEntity extends BaseEntity {
     /**
      * @in
      * @out
-     * @var AttachmentEntity
+     * @var AttachmentEntity[]
      * @collection 
      */
     private $attachments;
@@ -485,7 +507,7 @@ class NewsletterEntity extends BaseEntity {
 	}
 
 	/**
-	 * @return AttachmentEntity
+	 * @return AttachmentEntity[]
 	 */
 	public function getAttachments()
 	{
@@ -493,7 +515,7 @@ class NewsletterEntity extends BaseEntity {
 	}
 
 	/**
-	 * @param AttachmentEntity $attachments
+	 * @param AttachmentEntity[] $attachments
 	 * @return NewsletterEntity
 	 */
 	public function setAttachments($attachments)

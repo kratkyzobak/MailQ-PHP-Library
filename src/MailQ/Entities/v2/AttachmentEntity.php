@@ -2,7 +2,15 @@
 
 namespace MailQ\Entities\v2;
 
-class AttachmentEntity extends \MailQ\Entities\BaseEntity
+use MailQ\Entities\BaseEntity;
+
+/**
+ * @property string $displayName
+ * @property string $link
+ * @property string $mimeType
+ * @property string $source
+ */
+class AttachmentEntity extends BaseEntity
 {
 
 	/**

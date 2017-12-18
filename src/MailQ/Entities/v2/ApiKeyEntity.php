@@ -4,6 +4,10 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $apiKey
+ */
 class ApiKeyEntity extends BaseEntity
 {
 
@@ -17,7 +21,7 @@ class ApiKeyEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var integer
+	 * @var string
 	 */
 	private $apiKey;
 
@@ -40,7 +44,7 @@ class ApiKeyEntity extends BaseEntity
 	}
 
 	/**
-	 * @return int
+	 * @return string
 	 */
 	public function getApiKey()
 	{
@@ -48,7 +52,7 @@ class ApiKeyEntity extends BaseEntity
 	}
 
 	/**
-	 * @param int $apiKey
+	 * @param string $apiKey
 	 * @return ApiKeyEntity
 	 */
 	public function setApiKey($apiKey)

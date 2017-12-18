@@ -4,6 +4,16 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $name
+ * @property string $description
+ * @property integer $recipients
+ * @property integer $unsubscribers
+ * @property bool $formVisible
+ * @property array $variables
+ * @property LinkEntity $company
+ */
 class RecipientsListEntity extends BaseEntity {
 
       

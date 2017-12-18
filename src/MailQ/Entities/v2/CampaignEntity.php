@@ -4,6 +4,13 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $name
+ * @property \DateTime $created
+ * @property LinkEntity $company
+ * @property LinkEntity[] $newsletters
+ */
 class CampaignEntity extends BaseEntity
 {
 
@@ -38,7 +45,7 @@ class CampaignEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var LinkEntity
+	 * @var LinkEntity[]
 	 * @collection
 	 */
 	private $newsletters;
@@ -133,7 +140,7 @@ class CampaignEntity extends BaseEntity
 	}
 
 	/**
-	 * @return LinkEntity
+	 * @return LinkEntity[]
 	 */
 	public function getNewsletters()
 	{
@@ -141,7 +148,7 @@ class CampaignEntity extends BaseEntity
 	}
 
 	/**
-	 * @param LinkEntity $newsletters
+	 * @param LinkEntity[] $newsletters
 	 * @return CampaignEntity
 	 */
 	public function setNewsletters($newsletters)

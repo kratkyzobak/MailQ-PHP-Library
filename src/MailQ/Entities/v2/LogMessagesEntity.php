@@ -4,6 +4,9 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property LogMessageEntity $messages
+ */
 class LogMessagesEntity extends BaseEntity{
     
     /**
