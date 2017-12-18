@@ -4,19 +4,22 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property UnsubscriberEntity[] $unsubscribers
+ */
 class UnsubscribersEntity extends BaseEntity
 {
 
 	/**
 	 * @in
 	 * @out
-	 * @var UnsubscriberEntity
+	 * @var UnsubscriberEntity[]
 	 * @collection
 	 */
 	private $unsubscribers;
 
 	/**
-	 * @return UnsubscriberEntity
+	 * @return UnsubscriberEntity[]
 	 */
 	public function getUnsubscribers()
 	{
@@ -24,7 +27,7 @@ class UnsubscribersEntity extends BaseEntity
 	}
 
 	/**
-	 * @param UnsubscriberEntity $unsubscribers
+	 * @param UnsubscriberEntity[] $unsubscribers
 	 * @return UnsubscribersEntity
 	 */
 	public function setUnsubscribers($unsubscribers)

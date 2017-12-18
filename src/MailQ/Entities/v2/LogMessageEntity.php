@@ -4,6 +4,14 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $title
+ * @property string $text
+ * @property string $type
+ * @property \DateTime $created
+ * @property LinkEntity $company
+ */
 class LogMessageEntity extends BaseEntity
 {
 

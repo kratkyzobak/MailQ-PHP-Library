@@ -4,19 +4,22 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property EmailAddressEntity[] $emails
+ */
 class EmailAddressesEntity extends BaseEntity
 {
 
 	/**
 	 * @in
 	 * @out
-	 * @var EmailAddressEntity
+	 * @var EmailAddressEntity[]
 	 * @collection
 	 */
 	private $emails = [];
 
 	/**
-	 * @return EmailAddressEntity
+	 * @return EmailAddressEntity[]
 	 */
 	public function getEmails()
 	{

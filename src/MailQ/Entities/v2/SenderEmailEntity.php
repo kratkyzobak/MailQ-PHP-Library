@@ -4,6 +4,11 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $email
+ * @property LinkEntity $company
+ */
 class SenderEmailEntity extends BaseEntity
 {
 

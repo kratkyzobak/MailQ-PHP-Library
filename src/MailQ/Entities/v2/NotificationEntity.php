@@ -4,6 +4,18 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $name
+ * @property string $code
+ * @property string $subject
+ * @property string $sendAs
+ * @property string $appliedSenderEmail
+ * @property string $text
+ * @property string $template
+ * @property string $status
+ * @property LinkEntity $company
+ */
 class NotificationEntity extends BaseEntity
 {
 

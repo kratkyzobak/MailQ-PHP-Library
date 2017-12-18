@@ -4,6 +4,10 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property string $email
+ * @property array $data
+ */
 class RecipientEntity extends BaseEntity
 {
 

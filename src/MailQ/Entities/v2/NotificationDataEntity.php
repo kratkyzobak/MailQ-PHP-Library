@@ -4,6 +4,16 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property \DateTime $undelivered
+ * @property string $recipientEmail
+ * @property string $replyToEmail
+ * @property array $bcc
+ * @property array $cc
+ * @property array $data
+ * @property AttachmentEntity[] $attachments
+ */
 class NotificationDataEntity extends BaseEntity {
 
    
@@ -22,7 +32,7 @@ class NotificationDataEntity extends BaseEntity {
     /**
      * @in
      * @out
-     * @var string 
+     * @var string
      */
     private $recipientEmail;
     /**
@@ -56,6 +66,7 @@ class NotificationDataEntity extends BaseEntity {
      * @collection 
      */
     private $attachments;
+
 
     /**
      * @return int
@@ -198,7 +209,7 @@ class NotificationDataEntity extends BaseEntity {
     }
 
     /**
-     * @return AttachmentEntity
+     * @return AttachmentEntity[]
      */
     public function getAttachments()
     {
@@ -206,7 +217,7 @@ class NotificationDataEntity extends BaseEntity {
     }
 
     /**
-     * @param AttachmentEntity $attachments
+     * @param AttachmentEntity[] $attachments
      * @return NotificationDataEntity
      */
     public function setAttachments($attachments)

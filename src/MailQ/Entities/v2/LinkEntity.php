@@ -2,7 +2,13 @@
 
 namespace MailQ\Entities\v2;
 
-class LinkEntity extends \MailQ\Entities\BaseEntity
+use MailQ\Entities\BaseEntity;
+
+/**
+ * @property string $id
+ * @property string $link
+ */
+class LinkEntity extends BaseEntity
 {
 
 	/**

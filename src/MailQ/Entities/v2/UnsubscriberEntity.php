@@ -4,6 +4,14 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property string $id
+ * @property string $email
+ * @property \DateTime $unsubscribed
+ * @property string $action
+ * @property LinkEntity[] $recipientsList
+ * @property LinkEntity $company
+ */
 class UnsubscriberEntity extends BaseEntity
 {
 
@@ -108,7 +116,7 @@ class UnsubscriberEntity extends BaseEntity
 
 	/**
 	 * @param $unsubscribed
-	 * @return NotificationDataEntity
+	 * @return UnsubscriberEntity
 	 */
 	public function setUnsubscribed($unsubscribed)
 	{
@@ -139,7 +147,7 @@ class UnsubscriberEntity extends BaseEntity
 	}
 
 	/**
-	 * @return LinkEntity
+	 * @return LinkEntity[]
 	 */
 	public function getRecipientsList()
 	{
@@ -147,7 +155,7 @@ class UnsubscriberEntity extends BaseEntity
 	}
 
 	/**
-	 * @param LinkEntity $recipientsList
+	 * @param LinkEntity[] $recipientsList
 	 * @return UnsubscriberEntity
 	 */
 	public function setRecipientsList($recipientsList)
