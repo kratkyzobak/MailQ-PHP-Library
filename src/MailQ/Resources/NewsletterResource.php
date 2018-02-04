@@ -3,6 +3,7 @@
 namespace MailQ\Resources;
 
 use MailQ\Entities\v2\NewsletterEntity;
+use MailQ\Entities\v2\PreparedNewsletterEntity;
 use MailQ\Entities\v2\NewslettersEntity;
 use MailQ\Request;
 use Nette\Utils\Json;
@@ -65,9 +66,7 @@ trait NewsletterResource
 	}
 
 	/**
-	 *
 	 * @param NewsletterEntity $newsletter
-	 * @return NewsletterEntity
 	 */
 	public function updateNewsletter(NewsletterEntity $newsletter)
 	{
@@ -75,6 +74,17 @@ trait NewsletterResource
 		$request->setContentAsEntity($newsletter);
 		$this->getConnector()->sendRequest($request);
 	}
+
+    /**
+     * Allows to update newsletter in ready state without returning to test state
+     * @param PreparedNewsletterEntity $newsletter
+     */
+    public function updatePreparedNewsletter(PreparedNewsletterEntity $newsletter)
+    {
+        $request = Request::patch("{$this->getCompanyId()}/newsletters/{$newsletter->getId()}");
+        $request->setContentAsEntity($newsletter);
+        $this->getConnector()->sendRequest($request);
+    }
 
 	/**
 	 *

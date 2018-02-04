@@ -19,7 +19,7 @@ use MailQ\Entities\BaseEntity;
  * @property string $unsubscribeTemplateUrl
  * @property string $text
  */
-class NewsletterReadyEntity extends BaseEntity {
+class PreparedNewsletterEntity extends BaseEntity {
 
     /**
      * @in
@@ -123,7 +123,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param int $id
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setId($id)
 	{
@@ -141,7 +141,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param string $name
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setName($name)
 	{
@@ -159,7 +159,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param string $code
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setCode($code)
 	{
@@ -177,7 +177,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param string $subject
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setSubject($subject)
 	{
@@ -195,7 +195,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param string $sendAs
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setSendAs($sendAs)
 	{
@@ -213,7 +213,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param string $senderEmail
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setSenderEmail($senderEmail)
 	{
@@ -231,7 +231,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param boolean $unlimited
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setUnlimited($unlimited)
 	{
@@ -249,7 +249,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param int $recipientsListId
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setRecipientsListId($recipientsListId)
 	{
@@ -267,7 +267,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param int $dataPersistence
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setDataPersistence($dataPersistence)
 	{
@@ -285,7 +285,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param string $campaign
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setCampaign($campaign)
 	{
@@ -303,13 +303,31 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param string $templateUrl
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setTemplateUrl($templateUrl)
 	{
 		$this->templateUrl = $templateUrl;
 		return $this;
 	}
+
+    /**
+     * @return string
+     */
+    public function getUnsubscribeTemplateUrl()
+    {
+        return $this->unsubscribeTemplateUrl;
+    }
+
+    /**
+     * @param string $unsubscribeTemplateUrl
+     * @return PreparedNewsletterEntity
+     */
+    public function setUnsubscribeTemplateUrl($unsubscribeTemplateUrl)
+    {
+        $this->unsubscribeTemplateUrl = $unsubscribeTemplateUrl;
+        return $this;
+    }
 
 	/**
 	 * @return string
@@ -321,7 +339,7 @@ class NewsletterReadyEntity extends BaseEntity {
 
 	/**
 	 * @param string $text
-	 * @return NewsletterReadyEntity
+	 * @return PreparedNewsletterEntity
 	 */
 	public function setText($text)
 	{
