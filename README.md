@@ -22,10 +22,23 @@ $companyId = 1;
 $mailq = $mailqFactory->createMailQ($companyId);
 ```
 
+### Running sandbox with Docker
+
+Sandbox is minimum application for playing around with PHP MailQ library.
+
+#### Windows
+
+Run `docker run --rm -it -v %cd%:/app composer install` to install PHP dependencies
+Run `docker run --rm -it -v %cd%:/app php:cli php /app/sandbox/sandbox.php <API key> <company ID>`
+
+#### Unix
+
+Run `docker run --rm -it -v $(pwd):/app composer install` to install PHP dependencies
+Run `docker run --rm -it -v $(pwd):/app php:cli php /app/sandbox/sandbox.php <API key> <company ID>`
+
+Where API key is your private company key used for authentication and company ID is integer number used for identication company.
 
 ### [Campaign resource](http://docs.newmailing.apiary.io/#campaigns)
-
-
 
 #### Get all campaigns
 
@@ -103,7 +116,8 @@ $newsletterId = $newsletter->getId();
 
 ```php
 $data = [
- 	"name" => "Awesome newsletter",
+     "id" => 10,
+ 	 "name" => "Awesome newsletter",
      "campaign" => "Spring 2016",
      "subject" => "Buy our new product",
      "senderEmail" => "newsletter@example.org",

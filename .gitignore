@@ -2,7 +2,7 @@
 /temp/*
 /doc/*
 /vendor/*
-/demo/temp/*
+/sandbox/temp/*
 
 
 # Created by https://www.gitignore.io/api/phpstorm
