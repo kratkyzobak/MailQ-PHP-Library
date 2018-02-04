@@ -11,21 +11,15 @@ use MailQ\Entities\BaseEntity;
  * @property string $subject
  * @property string $sendAs
  * @property string $senderEmail
- * @property string $status
- * @property \DateTime $from
- * @property \DateTime $to
- * @property bool $automaticTime
  * @property bool $unlimited
  * @property integer $recipientsListId
  * @property integer $dataPersistence
  * @property string $campaign
- * @property string $csvUrl
  * @property string $templateUrl
  * @property string $unsubscribeTemplateUrl
- * @property LinkEntity $company
  * @property string $text
  */
-class NewsletterEntity extends BaseEntity {
+class NewsletterReadyEntity extends BaseEntity {
 
     /**
      * @in
@@ -68,34 +62,6 @@ class NewsletterEntity extends BaseEntity {
      * @var string 
      */
     private $senderEmail;
-
-    /**
-     * @in
-     * @out
-     * @var string 
-     */
-    private $status;
-
-    /**
-     * @in
-     * @out
-     * @var \DateTime 
-     */
-    private $from;
-
-    /**
-     * @in
-     * @out
-     * @var \DateTime 
-     */
-    private $to;
-
-    /**
-     * @in
-     * @out
-     * @var bool 
-     */
-    private $automaticTime;
 	
 	/**
      * @in
@@ -124,13 +90,6 @@ class NewsletterEntity extends BaseEntity {
      * @var string 
      */
     private $campaign;
-
-	/**
-     * @in
-     * @out
-     * @var string 
-     */
-    private $csvUrl;
 	
     /**
      * @in
@@ -145,13 +104,6 @@ class NewsletterEntity extends BaseEntity {
      * @var string 
      */
     private $unsubscribeTemplateUrl;
-
-    /**
-     * @in
-     * @out
-     * @var LinkEntity 
-     */
-    private $company;
 	
 	/**
 	 * @in
@@ -159,74 +111,8 @@ class NewsletterEntity extends BaseEntity {
 	 * @var string 
 	 */
 	private $text;
-
-	/**
-	 * @return null|string
-	 */
-	public function getFrom() {
-		if ($this->from != null) {
-			return $this->from->format(DATE_ATOM);
-		}
-		else {
-			return null;
-		}
-	}
-
-	/**
-	 * @return \DateTime
-	 */
-	public function getFromAsDateTime() {
-		return $this->from;
-	}
-
-	/**
-	 * @return null|string
-	 */
-	public function getTo() {
-		if ($this->to != null) {
-			return $this->to->format(DATE_ATOM);
-		}
-		else {
-			return null;
-		}
-	}
-
-	/**
-	 * @return \DateTime
-	 */
-	public function getToAsDateTime() {
-		return $this->to;
-	}
-
-	/**
-	 * @param $from
-	 * @return NewsletterEntity
-	 */
-	public function setFrom($from)
-	{
-		if (is_string($from)) {
-			$this->from = \DateTime::createFromFormat(DATE_ATOM, $from);
-		} elseif ($from instanceof \DateTime) {
-			$this->from = $from;
-		}
-		return $this;
-	}
-
-	/**
-	 * @param $to
-	 * @return NewsletterEntity
-	 */
-	public function setTo($to)
-	{
-		if (is_string($to)) {
-			$this->to = \DateTime::createFromFormat(DATE_ATOM, $to);
-		} elseif ($to instanceof \DateTime) {
-			$this->to = $to;
-		}
-		return $this;
-	}
-
-
+    
+    
 	/**
 	 * @return int
 	 */
@@ -237,7 +123,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param int $id
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setId($id)
 	{
@@ -255,7 +141,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param string $name
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setName($name)
 	{
@@ -273,7 +159,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param string $code
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setCode($code)
 	{
@@ -291,7 +177,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param string $subject
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setSubject($subject)
 	{
@@ -309,7 +195,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param string $sendAs
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setSendAs($sendAs)
 	{
@@ -327,47 +213,11 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param string $senderEmail
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setSenderEmail($senderEmail)
 	{
 		$this->senderEmail = $senderEmail;
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getStatus()
-	{
-		return $this->status;
-	}
-
-	/**
-	 * @param string $status
-	 * @return NewsletterEntity
-	 */
-	public function setStatus($status)
-	{
-		$this->status = $status;
-		return $this;
-	}
-
-	/**
-	 * @return boolean
-	 */
-	public function isAutomaticTime()
-	{
-		return $this->automaticTime;
-	}
-
-	/**
-	 * @param boolean $automaticTime
-	 * @return NewsletterEntity
-	 */
-	public function setAutomaticTime($automaticTime)
-	{
-		$this->automaticTime = $automaticTime;
 		return $this;
 	}
 
@@ -381,7 +231,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param boolean $unlimited
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setUnlimited($unlimited)
 	{
@@ -399,7 +249,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param int $recipientsListId
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setRecipientsListId($recipientsListId)
 	{
@@ -417,7 +267,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param int $dataPersistence
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setDataPersistence($dataPersistence)
 	{
@@ -435,29 +285,11 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param string $campaign
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setCampaign($campaign)
 	{
 		$this->campaign = $campaign;
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getCsvUrl()
-	{
-		return $this->csvUrl;
-	}
-
-	/**
-	 * @param string $csvUrl
-	 * @return NewsletterEntity
-	 */
-	public function setCsvUrl($csvUrl)
-	{
-		$this->csvUrl = $csvUrl;
 		return $this;
 	}
 
@@ -471,47 +303,11 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param string $templateUrl
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setTemplateUrl($templateUrl)
 	{
 		$this->templateUrl = $templateUrl;
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getUnsubscribeTemplateUrl()
-	{
-		return $this->unsubscribeTemplateUrl;
-	}
-
-	/**
-	 * @param string $unsubscribeTemplateUrl
-	 * @return NewsletterEntity
-	 */
-	public function setUnsubscribeTemplateUrl($unsubscribeTemplateUrl)
-	{
-		$this->unsubscribeTemplateUrl = $unsubscribeTemplateUrl;
-		return $this;
-	}
-
-	/**
-	 * @return LinkEntity
-	 */
-	public function getCompany()
-	{
-		return $this->company;
-	}
-
-	/**
-	 * @param LinkEntity $company
-	 * @return NewsletterEntity
-	 */
-	public function setCompany($company)
-	{
-		$this->company = $company;
 		return $this;
 	}
 
@@ -525,7 +321,7 @@ class NewsletterEntity extends BaseEntity {
 
 	/**
 	 * @param string $text
-	 * @return NewsletterEntity
+	 * @return NewsletterReadyEntity
 	 */
 	public function setText($text)
 	{
