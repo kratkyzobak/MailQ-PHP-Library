@@ -93,18 +93,18 @@ $logMessageEntity = $mailq->getLogMessage($logMessageId);
 
 ```php
 $data = [
- 	"name" => "Awesome newsletter",
-     "campaign"=> "Spring 2016",
-     "subject" => "Buy our new product",
-     "senderEmail" => "newsletter@example.org",
-     "sendAs" => "Awesome Company",
-     "from" => "2015-06-12T06:00:00+01:00",
-     "to" => "2016-06-19T06:00:00+01:00",
-     "text"=> "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
-     "automaticTime"=> false,
-     "recipientsListId"=>1,
-     "templateUrl" => "http://example.org/newsletter.html",
-     "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
+    "name" => "Awesome newsletter",
+    "campaign"=> "Spring 2016",
+    "subject" => "Buy our new product",
+    "senderEmail" => "newsletter@example.org",
+    "sendAs" => "Awesome Company",
+    "from" => "2018-07-01T00:00:00+00:00",
+    "to" => "2018-07-02T00:00:00+00:00",
+    "text"=> "TmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciw=",
+    "automaticTime"=> false,
+    "recipientsListId"=>1,
+    "templateUrl" => "http://example.org/newsletter.html",
+    "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
 ];
 $newsletter = new \MailQ\Entities\v2\NewsletterEntity($data);
 $mailq->createNewsletter($newsletter);
@@ -116,19 +116,19 @@ $newsletterId = $newsletter->getId();
 
 ```php
 $data = [
-     "id" => 10,
- 	 "name" => "Awesome newsletter",
-     "campaign" => "Spring 2016",
-     "subject" => "Buy our new product",
-     "senderEmail" => "newsletter@example.org",
-     "sendAs" => "Awesome Company",
-     "from" => "2015-06-12T06:00:00.000",
-     "to" => "2016-06-19T06:00:00.000",
-     "text" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
-     "automaticTime" => false,
-     "recipientsListId" => 1,
-     "templateUrl" => "http://example.org/newsletter.html",
-     "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
+    "id" => 1,
+    "name" => "Awesome newsletter",
+    "campaign" => "Spring 2016",
+    "subject" => "Buy our new product",
+    "senderEmail" => "newsletter@example.org",
+    "sendAs" => "Awesome Company",
+    "from" => "2018-07-01T00:00:00+00:00",
+    "to" => "2018-07-02T00:00:00+00:00",
+    "text" => "TmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciw=",
+    "automaticTime" => false,
+    "recipientsListId" => 1,
+    "templateUrl" => "http://example.org/newsletter.html",
+    "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
 ];
 $newsletter = new \MailQ\Entities\v2\NewsletterEntity($data);
 $mailq->updateNewsletter($newsletter);
@@ -176,7 +176,7 @@ $mailq->stopNewsletter($newsletterId);
 
 ```php
 $data = [
- 	"name" => "First Notification",
+    "name" => "First Notification",
     "code" => "N1",
     "subject" => "{{orderNumber}} order is ready",
     "sendAs" => "Awesome Company",
@@ -193,7 +193,7 @@ $notificationId = $notification->getId();
 
 ```php
 $data = [
- 	"name" => "First Notification",
+    "name" => "First Notification",
     "code" => "N1",
     "subject" => "{{orderNumber}} order is ready",
     "sendAs" => "Awesome Company",
