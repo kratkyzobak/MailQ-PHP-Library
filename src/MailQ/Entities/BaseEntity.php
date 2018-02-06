@@ -76,7 +76,7 @@ class BaseEntity {
             if ($property->hasAnnotation($mapping)) {
                 $annotation = $property->getAnnotation($mapping);
                 if (is_string($annotation)) {
-                    $this->attributeNames[$annotation] = $annotation;
+                    $this->attributeNames[$annotation] = $property->getName();
                 } else {
                     $this->attributeNames[$property->getName()] = $property->getName();
                 }
