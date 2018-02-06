@@ -28,13 +28,13 @@ Sandbox is minimum application for playing around with PHP MailQ library.
 
 #### Windows
 
-Run `docker run --rm -it -v %cd%:/app composer install` to install PHP dependencies
-Run `docker run --rm -it -v %cd%:/app php:cli php /app/sandbox/sandbox.php <API key> <company ID>`
+- Run `docker run --rm -it -v %cd%:/app composer install` to install PHP dependencies
+- Run `docker run --rm -it -v %cd%:/app php:cli php /app/sandbox/sandbox.php <API key> <company ID>`
 
 #### Unix
 
-Run `docker run --rm -it -v $(pwd):/app composer install` to install PHP dependencies
-Run `docker run --rm -it -v $(pwd):/app php:cli php /app/sandbox/sandbox.php <API key> <company ID>`
+- Run `docker run --rm -it -v $(pwd):/app composer install` to install PHP dependencies
+- Run `docker run --rm -it -v $(pwd):/app php:cli php /app/sandbox/sandbox.php <API key> <company ID>`
 
 Where API key is your private company key used for authentication and company ID is integer number used for identication company.
 
@@ -127,6 +127,28 @@ $data = [
     "text" => "TmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciw=",
     "automaticTime" => false,
     "recipientsListId" => 1,
+    "templateUrl" => "http://example.org/newsletter.html",
+    "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
+];
+$newsletter = new \MailQ\Entities\v2\NewsletterEntity($data);
+$mailq->updateNewsletter($newsletter);
+$newsletterId = $newsletter->getId();
+```
+
+#### Update newsletter in ready state
+
+
+```php
+$data = [
+    "id" => 1,
+    "name" => "Awesome newsletter",
+    "campaign" => "Spring 2016",
+    "subject" => "Buy our new product",
+    "senderEmail" => "newsletter@example.org",
+    "replyToEmail" : "newsletter@example.org",
+    "sendAs" => "Awesome Company",
+    "text" => "TmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciw=",
+    "automaticTime" => false,
     "templateUrl" => "http://example.org/newsletter.html",
     "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
 ];
