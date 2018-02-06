@@ -11,6 +11,7 @@ use MailQ\Entities\BaseEntity;
  * @property string $subject
  * @property string $sendAs
  * @property string $senderEmail
+ * @property string $replyTo
  * @property string $status
  * @property \DateTime $from
  * @property \DateTime $to
@@ -21,6 +22,8 @@ use MailQ\Entities\BaseEntity;
  * @property string $campaign
  * @property string $csvUrl
  * @property string $templateUrl
+ * @property string $template
+ * @property string $tags
  * @property string $unsubscribeTemplateUrl
  * @property LinkEntity $company
  * @property string $text
@@ -68,6 +71,13 @@ class NewsletterEntity extends BaseEntity {
      * @var string 
      */
     private $senderEmail;
+
+	/**
+	 * @in
+	 * @out replyToEmail
+	 * @var string
+	 */
+	private $replyTo;
 
     /**
      * @in
@@ -138,6 +148,21 @@ class NewsletterEntity extends BaseEntity {
      * @var string 
      */
     private $templateUrl;
+
+	/**
+	 * @in
+	 * @out
+	 * @var string
+	 */
+	private $template;
+
+	/**
+	 * @in
+	 * @out
+	 * @var TagEntity[]
+	 * @collection
+	 */
+	private $tags;
 
     /**
      * @in
@@ -532,6 +557,65 @@ class NewsletterEntity extends BaseEntity {
 		$this->text = $text;
 		return $this;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getReplyTo()
+	{
+		return $this->replyTo;
+	}
+
+	/**
+	 * @param string $replyTo
+	 * @return NewsletterEntity
+	 */
+	public function setReplyTo($replyTo)
+	{
+		$this->replyTo = $replyTo;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTemplate()
+	{
+		return $this->template;
+	}
+
+	/**
+	 * @param string $template
+	 * @return NewsletterEntity
+	 */
+	public function setTemplate($template)
+	{
+		$this->template = $template;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTags()
+	{
+		return $this->tags;
+	}
+
+	/**
+	 * @param string $tags
+	 * @return NewsletterEntity
+	 */
+	public function setTags($tags)
+	{
+		$this->tags = $tags;
+		return $this;
+	}
+
+
+
+
+
 
 
 

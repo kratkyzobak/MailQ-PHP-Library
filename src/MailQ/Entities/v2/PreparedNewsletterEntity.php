@@ -11,11 +11,14 @@ use MailQ\Entities\BaseEntity;
  * @property string $subject
  * @property string $sendAs
  * @property string $senderEmail
+ * @property string $replyTo
  * @property bool $unlimited
  * @property integer $recipientsListId
  * @property integer $dataPersistence
  * @property string $campaign
  * @property string $templateUrl
+ * @property string $template
+ * @property string $tags
  * @property string $unsubscribeTemplateUrl
  * @property string $text
  */
@@ -62,20 +65,22 @@ class PreparedNewsletterEntity extends BaseEntity {
      * @var string 
      */
     private $senderEmail;
-	
+
+
+	/**
+	 * @in
+	 * @out replyToEmail
+	 * @var string
+	 */
+	private $replyTo;
+
+
 	/**
      * @in
      * @out
      * @var bool 
      */
     private $unlimited;
-
-    /**
-     * @in
-     * @out
-     * @var integer 
-     */
-    private $recipientsListId;
 	
 	/**
      * @in
@@ -97,6 +102,21 @@ class PreparedNewsletterEntity extends BaseEntity {
      * @var string 
      */
     private $templateUrl;
+
+	/**
+	 * @in
+	 * @out
+	 * @var string
+	 */
+	private $template;
+
+	/**
+	 * @in
+	 * @out
+	 * @var TagEntity[]
+	 * @collection
+	 */
+	private $tags;
 
     /**
      * @in
@@ -242,24 +262,6 @@ class PreparedNewsletterEntity extends BaseEntity {
 	/**
 	 * @return int
 	 */
-	public function getRecipientsListId()
-	{
-		return $this->recipientsListId;
-	}
-
-	/**
-	 * @param int $recipientsListId
-	 * @return PreparedNewsletterEntity
-	 */
-	public function setRecipientsListId($recipientsListId)
-	{
-		$this->recipientsListId = $recipientsListId;
-		return $this;
-	}
-
-	/**
-	 * @return int
-	 */
 	public function getDataPersistence()
 	{
 		return $this->dataPersistence;
@@ -344,6 +346,61 @@ class PreparedNewsletterEntity extends BaseEntity {
 	public function setText($text)
 	{
 		$this->text = $text;
+		return $this;
+	}
+
+
+	/**
+	 * @return string
+	 */
+	public function getReplyTo()
+	{
+		return $this->replyTo;
+	}
+
+	/**
+	 * @param string $replyTo
+	 * @return PreparedNewsletterEntity
+	 */
+	public function setReplyTo($replyTo)
+	{
+		$this->replyTo = $replyTo;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTemplate()
+	{
+		return $this->template;
+	}
+
+	/**
+	 * @param string $template
+	 * @return PreparedNewsletterEntity
+	 */
+	public function setTemplate($template)
+	{
+		$this->template = $template;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTags()
+	{
+		return $this->tags;
+	}
+
+	/**
+	 * @param string $tags
+	 * @return PreparedNewsletterEntity
+	 */
+	public function setTags($tags)
+	{
+		$this->tags = $tags;
 		return $this;
 	}
 
