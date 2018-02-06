@@ -79,7 +79,6 @@ class Connector
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectionTimeout);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
         if ($request->hasContent()) {
-            print_r($request->getContent());
             curl_setopt($ch, CURLOPT_POSTFIELDS, $request->getContent());
         }
         if ($request->isPost()) {
