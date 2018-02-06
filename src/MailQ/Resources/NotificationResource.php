@@ -73,7 +73,7 @@ trait NotificationResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/notifications/{$notificationId}/data/{$notificationDataId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new NotificationDataEntity($response->getContent());
+		return new NotificationDataEntity($response->getContent(), true);
 	}
 
 	/**

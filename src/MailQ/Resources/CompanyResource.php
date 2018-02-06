@@ -17,7 +17,7 @@ trait CompanyResource
 	{
 		$request = Request::get("{$this->getCompanyId()}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new CompanyEntity($response->getContent());
+		return new CompanyEntity($response->getContent(), true);
 	}
 
 	/**
@@ -28,7 +28,7 @@ trait CompanyResource
 	{
 		$request = Request::put("{$this->getCompanyId()}");
 		$response = $this->getConnector()->sendRequest($request);
-		$apiKeyEntity = new ApiKeyEntity($response->getContent());
+		$apiKeyEntity = new ApiKeyEntity($response->getContent(), true);
 		return $apiKeyEntity->getApiKey();
 	}
 

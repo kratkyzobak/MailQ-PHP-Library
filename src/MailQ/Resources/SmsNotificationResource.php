@@ -41,7 +41,7 @@ trait SmsNotificationResource
 		$request = Request::post("{$this->getCompanyId()}/sms-notifications/{$smsNotificationId}/batch/data");
 		$request->setContentAsEntity($batch);
 		$this->getConnector()->sendRequest($request);
-		return new SmsBatchResultEntity($request->getContent());
+		return new SmsBatchResultEntity($request->getContent(), true);
 	}
 
 
@@ -49,7 +49,7 @@ trait SmsNotificationResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/sms-notifications/{$smsNotificationId}/data/{$smsId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new SmsEntity($response->getContent());
+		return new SmsEntity($response->getContent(), true);
 	}
 
 	/**
@@ -95,7 +95,7 @@ trait SmsNotificationResource
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
 		$json->smsNotifications = $data;
-		return new SmsNotificationsEntity($json);
+		return new SmsNotificationsEntity($json, true);
 	}
 
 
@@ -108,7 +108,7 @@ trait SmsNotificationResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/sms-notifications/{$smsNotificationId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new SmsNotificationEntity($response->getContent());
+		return new SmsNotificationEntity($response->getContent(), true);
 	}
 
 }

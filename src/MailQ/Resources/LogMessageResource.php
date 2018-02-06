@@ -22,7 +22,7 @@ trait LogMessageResource
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
 		$json->messages = $data;
-		return new LogMessagesEntity($json);
+		return new LogMessagesEntity($json, true);
 	}
 
 
@@ -35,7 +35,7 @@ trait LogMessageResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/log-messages/{$logMessageId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new LogMessageEntity($response->getContent());
+		return new LogMessageEntity($response->getContent(), true);
 	}
 
 }

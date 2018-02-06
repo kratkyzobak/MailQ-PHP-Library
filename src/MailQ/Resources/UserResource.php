@@ -22,7 +22,7 @@ trait UserResource
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
 		$json->users = $data;
-		return new UsersEntity($json);
+		return new UsersEntity($json, true);
 	}
 
 
@@ -35,7 +35,7 @@ trait UserResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/users/{$userId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new UserEntity($response->getContent());
+		return new UserEntity($response->getContent(), true);
 	}
 
 }
