@@ -5,7 +5,7 @@ namespace MailQ\Entities\v2;
 use MailQ\Entities\BaseEntity;
 
 /**
- * @property NewsletterEntity[] $messages
+ * @property NewsletterEntity[] $newsletters
  */
 class NewslettersEntity extends BaseEntity
 {
