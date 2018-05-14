@@ -92,9 +92,9 @@ trait NewsletterResource
 	 *
 	 * @return NewslettersEntity
 	 */
-	public function getNewsletters()
+	public function getNewsletters($offset = 0, $limit = 100)
 	{
-		$request = Request::get("{$this->getCompanyId()}/newsletters");
+		$request = Request::get("{$this->getCompanyId()}/newsletters", ['offset' => $offset, 'limit' => $limit]);
 		$response = $this->getConnector()->sendRequest($request);
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
