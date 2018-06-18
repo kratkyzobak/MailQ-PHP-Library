@@ -17,9 +17,9 @@ trait UnsubscriberResource
 	 * @param DateTime|null $from
 	 * @return UnsubscribersEntity
 	 */
-	public function getUnsubscribers(\DateTime $from = null)
+	public function getUnsubscribers(\DateTime $from = null, $offset = 0, $limit = 100)
 	{
-		$parameters = [];
+		$parameters = ['offset' => $offset, 'limit' => $limit];
 		if ($from != null) {
 			$parameters['from'] = $from->format('Y-m-d\TH:i:s.uP');
 		}
