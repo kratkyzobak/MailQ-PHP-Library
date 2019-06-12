@@ -17,9 +17,9 @@ There is MailQ object which is facade to whole MailQ REST API. Most common use c
 ```php
 $apiKey = "6e2211bf472a9478f03420fb5897e324c57d05fc27bc0e871083275e98eec344";
 $apiUrl = "http://mailq-test.quanti.cz/api/v2";
-$mailqFactory = new MailQFactory($apiUrl,$apiKey);
+$mailqFactory = new MailQFactory($apiUrl);
 $companyId = 1;
-$mailq = $mailqFactory->createMailQ($companyId);
+$mailq = $mailqFactory->createMailQ($companyId, $apiKey);
 ```
 
 ### Running sandbox with Docker

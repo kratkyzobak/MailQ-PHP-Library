@@ -12,25 +12,24 @@ class MailQFactory
 
 	private $baseUrl;
 
-	private $apiKey;
 
 
-	public function __construct($baseUrl, $apiKey)
+	public function __construct($baseUrl)
 	{
 		$this->baseUrl = $baseUrl;
-		$this->apiKey = $apiKey;
 	}
 
 
 	/**
-	 * @param int $companyId
+	 * @param $companyId
+	 * @param $apiKey
 	 * @return \MailQ\MailQ
 	 * @throws \Exception
 	 */
-	public function createMailQ($companyId)
+	public function createMailQ($companyId, $apiKey)
 	{
 		if ($companyId != null) {
-			$connector = Connector::getInstance($this->baseUrl, $this->apiKey);
+			$connector = Connector::getInstance($this->baseUrl, $apiKey);
 			return new MailQ($connector, $companyId);
 		} else {
 			throw new \Exception("Cannot create MailQ object without companyId. Expecting number, got {$companyId}.");
