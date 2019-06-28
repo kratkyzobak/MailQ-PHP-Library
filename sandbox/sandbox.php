@@ -10,9 +10,9 @@ $loader->register();
 if (count($argv) == 3) {
 	$apiKey = $argv[1];
 	$apiUrl = "https://mailq-test.quanti.cz/api/v2";
-	$mailqFactory = new MailQ\MailQFactory($apiUrl,$apiKey);
+	$mailqFactory = new MailQ\MailQFactory($apiUrl);
 	$companyId = intval($argv[2]);
-	$mailq = $mailqFactory->createMailQ($companyId);
+	$mailq = $mailqFactory->createMailQ($companyId, $apiKey);
 
 	$company = $mailq->getCompany();
 	print_r("Your company name is {$company->getName()}");

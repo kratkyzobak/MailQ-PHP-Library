@@ -23,6 +23,8 @@ use MailQ\Entities\BaseEntity;
  * @property string $csvUrl
  * @property string $templateUrl
  * @property string $template
+ * @property string $ampTemplateUrl
+ * @property string $ampTemplate
  * @property string $tags
  * @property string $unsubscribeTemplateUrl
  * @property LinkEntity $company
@@ -155,6 +157,20 @@ class NewsletterEntity extends BaseEntity {
 	 * @var string
 	 */
 	private $template;
+
+	/**
+	 * @in
+	 * @out
+	 * @var string
+	 */
+	private $ampTemplateUrl;
+
+	/**
+	 * @in
+	 * @out
+	 * @var string
+	 */
+	private $ampTemplate;
 
 	/**
 	 * @in
@@ -507,6 +523,24 @@ class NewsletterEntity extends BaseEntity {
 	/**
 	 * @return string
 	 */
+	public function getAmpTemplateUrl()
+	{
+		return $this->ampTemplateUrl;
+	}
+
+	/**
+	 * @param string $ampTemplateUrl
+	 * @return NewsletterEntity
+	 */
+	public function setAmpTemplateUrl($ampTemplateUrl)
+	{
+		$this->ampTemplateUrl = $ampTemplateUrl;
+		return $this;
+	}
+
+	/**
+	 * @return string
+	 */
 	public function getUnsubscribeTemplateUrl()
 	{
 		return $this->unsubscribeTemplateUrl;
@@ -597,6 +631,25 @@ class NewsletterEntity extends BaseEntity {
 	/**
 	 * @return string
 	 */
+	public function getAmpTemplate()
+	{
+		return $this->ampTemplate;
+	}
+
+	/**
+	 * @param string $ampTemplate
+	 * @return NewsletterEntity
+	 */
+	public function setAmpTemplate($ampTemplate)
+	{
+		$this->ampTemplate = $ampTemplate;
+		return $this;
+	}
+
+
+	/**
+	 * @return string
+	 */
 	public function getTags()
 	{
 		return $this->tags;
@@ -611,14 +664,5 @@ class NewsletterEntity extends BaseEntity {
 		$this->tags = $tags;
 		return $this;
 	}
-
-
-
-
-
-
-
-
-
 
 }

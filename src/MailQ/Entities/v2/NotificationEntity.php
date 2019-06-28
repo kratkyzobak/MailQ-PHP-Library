@@ -13,6 +13,7 @@ use MailQ\Entities\BaseEntity;
  * @property string $appliedSenderEmail
  * @property string $text
  * @property string $template
+ * @property string $ampTemplate
  * @property string $status
  * @property LinkEntity $company
  */
@@ -74,6 +75,13 @@ class NotificationEntity extends BaseEntity
 	 * @var string
 	 */
 	private $template;
+
+	/**
+	 * @in
+	 * @out
+	 * @var string
+	 */
+	private $ampTemplate;
 
 	/**
 	 * @in
@@ -232,6 +240,26 @@ class NotificationEntity extends BaseEntity
 		$this->template = $template;
 		return $this;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getAmpTemplate()
+	{
+		return $this->ampTemplate;
+	}
+
+	/**
+	 * @param $ampTemplate
+	 * @return NotificationEntity
+	 */
+	public function setAmpTemplate($ampTemplate)
+	{
+		$this->ampTemplate = $ampTemplate;
+		return $this;
+	}
+
+
 
 	/**
 	 * @return string

@@ -17,9 +17,9 @@ There is MailQ object which is facade to whole MailQ REST API. Most common use c
 ```php
 $apiKey = "6e2211bf472a9478f03420fb5897e324c57d05fc27bc0e871083275e98eec344";
 $apiUrl = "http://mailq-test.quanti.cz/api/v2";
-$mailqFactory = new MailQFactory($apiUrl,$apiKey);
+$mailqFactory = new MailQFactory($apiUrl);
 $companyId = 1;
-$mailq = $mailqFactory->createMailQ($companyId);
+$mailq = $mailqFactory->createMailQ($companyId, $apiKey);
 ```
 
 ### Running sandbox with Docker
@@ -128,6 +128,7 @@ $data = [
     "automaticTime" => false,
     "recipientsListId" => 1,
     "templateUrl" => "http://example.org/newsletter.html",
+    "ampTemplateUrl" => "http://example.org/ampNewsletter.html",
     "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
 ];
 $newsletter = new \MailQ\Entities\v2\NewsletterEntity($data);
@@ -150,6 +151,7 @@ $data = [
     "text" => "TmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciw=",
     "automaticTime" => false,
     "templateUrl" => "http://example.org/newsletter.html",
+    "ampTemplateUrl" => "http://example.org/ampNewsletter.html",
     "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
 ];
 $newsletter = new \MailQ\Entities\v2\NewsletterEntity($data);
@@ -204,6 +206,7 @@ $data = [
     "sendAs" => "Awesome Company",
     "text" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
     "template" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
+    "ampTemplate" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
     "appliedSenderEmail" => "notification@example.org"
 ];
 $notification = new \MailQ\Entities\v2\NotificationEntity($data);
@@ -215,12 +218,14 @@ $notificationId = $notification->getId();
 
 ```php
 $data = [
+    "id" => 1,
     "name" => "First Notification",
     "code" => "N1",
     "subject" => "{{orderNumber}} order is ready",
     "sendAs" => "Awesome Company",
     "text" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
     "template" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
+    "ampTemplate" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
     "appliedSenderEmail" => "notification@example.org"
 ];
 $notification = new \MailQ\Entities\v2\NotificationEntity($data);

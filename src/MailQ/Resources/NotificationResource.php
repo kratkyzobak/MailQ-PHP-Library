@@ -29,13 +29,11 @@ trait NotificationResource
 	}
 
 	/**
-	 *
 	 * @param NotificationEntity $notification
-	 * @param int $notificationId
 	 */
-	public function updateNotification(NotificationEntity $notification, $notificationId)
+	public function updateNotification(NotificationEntity $notification)
 	{
-		$request = Request::put("{$this->getCompanyId()}/notifications/{$notificationId}");
+		$request = Request::put("{$this->getCompanyId()}/notifications/{$notification->getId()}");
 		$request->setContentAsEntity($notification);
 		$this->getConnector()->sendRequest($request);
 	}
