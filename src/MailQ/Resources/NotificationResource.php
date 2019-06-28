@@ -29,13 +29,11 @@ trait NotificationResource
 	}
 
 	/**
-	 *
 	 * @param NotificationEntity $notification
-	 * @param int $notificationId
 	 */
-	public function updateNotification(NotificationEntity $notification, $notificationId)
+	public function updateNotification(NotificationEntity $notification)
 	{
-		$request = Request::put("{$this->getCompanyId()}/notifications/{$notificationId}");
+		$request = Request::put("{$this->getCompanyId()}/notifications/{$notification->getId()}");
 		$request->setContentAsEntity($notification);
 		$this->getConnector()->sendRequest($request);
 	}
@@ -73,7 +71,7 @@ trait NotificationResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/notifications/{$notificationId}/data/{$notificationDataId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new NotificationDataEntity($response->getContent());
+		return new NotificationDataEntity($response->getContent(), true);
 	}
 
 	/**
@@ -89,7 +87,7 @@ trait NotificationResource
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
 		$json->notifications = $data;
-		return new NotificationsDataEntity($response->getContent());
+		return new NotificationsDataEntity($json);
 	}
 
 

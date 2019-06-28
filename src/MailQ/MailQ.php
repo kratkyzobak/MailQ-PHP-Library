@@ -2,6 +2,7 @@
 
 namespace MailQ;
 
+use MailQ\Resources\CampaignResource;
 use MailQ\Resources\CompanyResource;
 use MailQ\Resources\LogMessageResource;
 use MailQ\Resources\NewsletterResource;
@@ -15,46 +16,47 @@ use MailQ\Resources\UserResource;
 class MailQ
 {
 
-	use CompanyResource,
-		LogMessageResource,
-		NewsletterResource,
-		NotificationResource,
-		RecipientListResource,
-		SenderEmailResource,
-		SmsNotificationResource,
-		UnsubscriberResource,
-		UserResource;
+    use CompanyResource,
+        CampaignResource,
+        LogMessageResource,
+        NewsletterResource,
+        NotificationResource,
+        RecipientListResource,
+        SenderEmailResource,
+        SmsNotificationResource,
+        UnsubscriberResource,
+        UserResource;
 
-	/**
-	 * @var Connector
-	 */
-	private $connector;
+    /**
+     * @var Connector
+     */
+    private $connector;
 
-	private $companyId;
+    private $companyId;
 
-	public function __construct(Connector $connector, $companyId)
-	{
-		$this->connector = $connector;
-		$this->companyId = $companyId;
-	}
+    public function __construct(Connector $connector, $companyId)
+    {
+        $this->connector = $connector;
+        $this->companyId = $companyId;
+    }
 
-	public function setCompanyId($companyId)
-	{
-		$this->companyId = $companyId;
-	}
+    public function setCompanyId($companyId)
+    {
+        $this->companyId = $companyId;
+    }
 
-	/**
-	 *
-	 * @return Connector
-	 */
-	protected function getConnector()
-	{
-		return $this->connector;
-	}
+    /**
+     *
+     * @return Connector
+     */
+    protected function getConnector()
+    {
+        return $this->connector;
+    }
 
-	protected function getCompanyId()
-	{
-		return $this->companyId;
-	}
+    protected function getCompanyId()
+    {
+        return $this->companyId;
+    }
 
 }

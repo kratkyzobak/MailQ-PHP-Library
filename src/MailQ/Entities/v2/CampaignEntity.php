@@ -4,6 +4,13 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property integer $id
+ * @property string $name
+ * @property \DateTime $created
+ * @property LinkEntity $company
+ * @property LinkEntity[] $newsletters
+ */
 class CampaignEntity extends BaseEntity
 {
 
@@ -38,7 +45,7 @@ class CampaignEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var LinkEntity
+	 * @var LinkEntity[]
 	 * @collection
 	 */
 	private $newsletters;
@@ -50,10 +57,18 @@ class CampaignEntity extends BaseEntity
 	public function getCreated()
 	{
 		if ($this->created != null) {
-			return $this->created->format('Y-m-d\TH:i:s.u');
+			return $this->created->format(DATE_ATOM);
 		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getCreatedAsDateTime()
+	{
+		return $this->created;
 	}
 
 	/**
@@ -63,7 +78,7 @@ class CampaignEntity extends BaseEntity
 	public function setCreated($created)
 	{
 		if (is_string($created)) {
-			$this->created = \DateTime::createFromFormat('Y-m-d\TH:i:s.u', $created);
+			$this->created = \DateTime::createFromFormat(DATE_ATOM, $created);
 		} elseif ($created instanceof \DateTime) {
 			$this->created = $created;
 		}
@@ -125,7 +140,7 @@ class CampaignEntity extends BaseEntity
 	}
 
 	/**
-	 * @return LinkEntity
+	 * @return LinkEntity[]
 	 */
 	public function getNewsletters()
 	{
@@ -133,7 +148,7 @@ class CampaignEntity extends BaseEntity
 	}
 
 	/**
-	 * @param LinkEntity $newsletters
+	 * @param LinkEntity[] $newsletters
 	 * @return CampaignEntity
 	 */
 	public function setNewsletters($newsletters)

@@ -4,8 +4,8 @@ namespace MailQ\Resources;
 
 use MailQ\Entities\v2\CampaignEntity;
 use MailQ\Entities\v2\CampaignsEntity;
-use MailQ\Entities\v2\CompanyEntity;
 use MailQ\Request;
+use Nette\Utils\Json;
 use stdClass;
 
 trait CampaignResource
@@ -13,7 +13,7 @@ trait CampaignResource
 
 	/**
 	 *
-	 * @return CompanyEntity
+	 * @return CampaignsEntity
 	 */
 	public function getCampaigns()
 	{
@@ -22,7 +22,7 @@ trait CampaignResource
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
 		$json->campaigns = $data;
-		return new CampaignsEntity($json);
+		return new CampaignsEntity($json, true);
 	}
 
 	/**
@@ -33,7 +33,7 @@ trait CampaignResource
 	{
 		$request = Request::put("{$this->getCompanyId()}/campaigns/{$campaignId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new CampaignEntity($response->getContent());
+		return new CampaignEntity($response->getContent(), true);
 	}
 
 }

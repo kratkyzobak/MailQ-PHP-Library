@@ -2,11 +2,15 @@
 
 namespace MailQ\Entities;
 
+use Nette\Reflection\ClassType;
+use Nette\SmartObject;
 use Nette\Utils\ArrayHash;
 use Nette\Utils\Json;
 use Nette\Utils\Strings;
 
-class BaseEntity extends \Nette\Object {
+class BaseEntity {
+
+    use SmartObject;
 
     const INVERT_NAMES = true;
 
@@ -31,14 +35,15 @@ class BaseEntity extends \Nette\Object {
                 if ($value instanceof \stdClass) {
                     $value = (array) $value;
                 }
-                $reflection = $this->getReflection();
+                $reflection = new ClassType($this);
                 if ($this->attributeNames->offsetExists($key)) {
                     $propertyName = $this->attributeNames->offsetGet($key);
                     if ($reflection->hasProperty($propertyName)) {
                         $property = $reflection->getProperty($propertyName);
                         $type = $property->getAnnotation('var');
-                        if (Strings::endsWith($type, 'Entity')) {
-                            $classWithNamespace = sprintf("\\%s\\%s", $reflection->getNamespaceName(), (string) $type);
+                        if (Strings::endsWith($type, 'Entity') || Strings::endsWith($type, 'Entity[]')) {
+                            $className = Strings::replace($type,'~\\[\\]~i');
+                            $classWithNamespace = sprintf("\\%s\\%s", $reflection->getNamespaceName(), (string) $className);
                             if (is_array($value) && $property->hasAnnotation('collection')) {
                                 $arrayData = array();
                                 foreach ($value as $valueData) {
@@ -61,15 +66,17 @@ class BaseEntity extends \Nette\Object {
      * Creates ArrayHash where key is in annotation name
      * and value is property name
      * It is used to find property name by in annotation value
+     * @param $mapping
      */
     private function initMapping($mapping) {
         $this->attributeNames = new ArrayHash();
-        $properties = $this->getReflection()->getProperties();
+        $reflection = new ClassType($this);
+        $properties = $reflection->getProperties();
         foreach ($properties as $property) {
             if ($property->hasAnnotation($mapping)) {
                 $annotation = $property->getAnnotation($mapping);
-                if ($annotation !== true) {
-                    $this->attributeNames[$annotation->name] = $property->getName();
+                if (is_string($annotation)) {
+                    $this->attributeNames[$annotation] = $property->getName();
                 } else {
                     $this->attributeNames[$property->getName()] = $property->getName();
                 }
@@ -80,13 +87,14 @@ class BaseEntity extends \Nette\Object {
     public function toArray($inverse = false) {
         $data = array();
         $mapping = $inverse ? 'in' : 'out';
-        $properties = $this->getReflection()->getProperties();
+        $reflection = new ClassType($this);
+        $properties = $reflection->getProperties();
         foreach ($properties as $key => $property) {
             if ($property->hasAnnotation($mapping)) {
                 $propertyName = $property->getName();
                 $annotation = $property->getAnnotation($mapping);
-                if ($annotation !== true) {
-                    $outputName = $annotation->name;
+                if (is_string($annotation)) {
+                    $outputName = $annotation;
                 } else {
                     $outputName = $property->getName();
                 }

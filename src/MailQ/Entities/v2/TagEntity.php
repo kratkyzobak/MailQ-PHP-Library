@@ -5,16 +5,16 @@ namespace MailQ\Entities\v2;
 use MailQ\Entities\BaseEntity;
 
 /**
- * @property integer $id
- * @property string $apiKey
+ * @property string $id
+ * @property string $name
  */
-class ApiKeyEntity extends BaseEntity
+class TagEntity extends BaseEntity
 {
 
 	/**
 	 * @in
 	 * @out
-	 * @var integer
+	 * @var string
 	 */
 	private $id;
 
@@ -23,10 +23,10 @@ class ApiKeyEntity extends BaseEntity
 	 * @out
 	 * @var string
 	 */
-	private $apiKey;
+	private $name;
 
 	/**
-	 * @return int
+	 * @return string
 	 */
 	public function getId()
 	{
@@ -34,8 +34,8 @@ class ApiKeyEntity extends BaseEntity
 	}
 
 	/**
-	 * @param int $id
-	 * @return ApiKeyEntity
+	 * @param string $id
+	 * @return TagEntity
 	 */
 	public function setId($id)
 	{
@@ -46,22 +46,22 @@ class ApiKeyEntity extends BaseEntity
 	/**
 	 * @return string
 	 */
-	public function getApiKey()
+	public function getName()
 	{
-		return $this->apiKey;
+		return $this->name;
 	}
 
 	/**
-	 * @param string $apiKey
-	 * @return ApiKeyEntity
+	 * @param string $name
+	 * @return TagEntity
 	 */
-	public function setApiKey($apiKey)
+	public function setName($name)
 	{
-		$this->apiKey = $apiKey;
+		$this->name = $name;
 		return $this;
 	}
 
-	
 
+    
 
 }

@@ -4,6 +4,9 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property NotificationEntity[] $notifications
+ */
 class NotificationsEntity extends BaseEntity
 {
 
@@ -17,7 +20,7 @@ class NotificationsEntity extends BaseEntity
 	private $notifications;
 
 	/**
-	 * @return NotificationEntity
+	 * @return NotificationEntity[]
 	 */
 	public function getNotifications()
 	{
@@ -25,7 +28,7 @@ class NotificationsEntity extends BaseEntity
 	}
 
 	/**
-	 * @param NotificationEntity $notifications
+	 * @param NotificationEntity[] $notifications
 	 * @return NotificationsEntity
 	 */
 	public function setNotifications($notifications)

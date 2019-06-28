@@ -22,7 +22,7 @@ trait SenderEmailResource
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
 		$json->emails = $data;
-		return new SenderEmailsEntity($json);
+		return new SenderEmailsEntity($json, true);
 	}
 
 
@@ -34,7 +34,7 @@ trait SenderEmailResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/sender-emails/{$senderEmailId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new SenderEmailEntity($response->getContent());
+		return new SenderEmailEntity($response->getContent(), true);
 	}
 
 }

@@ -13,19 +13,32 @@ Add this section to your config. You should use different URL and API key for de
 
 ## Usage
 There is MailQ object which is facade to whole MailQ REST API. Most common use case is only one company in MailQ per customer. You need to instantiate MailQ object with company ID. Because there are also customers with multiple companies there is MailQFactory which creates MailQ for specific company.
- 
+
 ```php
 $apiKey = "6e2211bf472a9478f03420fb5897e324c57d05fc27bc0e871083275e98eec344";
 $apiUrl = "http://mailq-test.quanti.cz/api/v2";
-$mailqFactory = new MailQFactory($apiUrl,$apiKey);
+$mailqFactory = new MailQFactory($apiUrl);
 $companyId = 1;
-$mailq = $mailqFactory->createMailQ($companyId);
+$mailq = $mailqFactory->createMailQ($companyId, $apiKey);
 ```
 
+### Running sandbox with Docker
+
+Sandbox is minimum application for playing around with PHP MailQ library.
+
+#### Windows
+
+- Run `docker run --rm -it -v %cd%:/app composer install` to install PHP dependencies
+- Run `docker run --rm -it -v %cd%:/app php:cli php /app/sandbox/sandbox.php <API key> <company ID>`
+
+#### Unix
+
+- Run `docker run --rm -it -v $(pwd):/app composer install` to install PHP dependencies
+- Run `docker run --rm -it -v $(pwd):/app php:cli php /app/sandbox/sandbox.php <API key> <company ID>`
+
+Where API key is your private company key used for authentication and company ID is integer number used for identication company.
 
 ### [Campaign resource](http://docs.newmailing.apiary.io/#campaigns)
-
-
 
 #### Get all campaigns
 
@@ -52,7 +65,7 @@ $company = $mailq->getCompany();
 
 #### Regenerate API key
 
-Use this with caution! After regenerating API key application will throw errors because you have already create connection 
+Use this with caution! After regenerating API key application will throw errors because you have already create connection
 
 ```php
 $apiKey = $mailq->regenerateApiKey();
@@ -80,18 +93,18 @@ $logMessageEntity = $mailq->getLogMessage($logMessageId);
 
 ```php
 $data = [
- 	"name" => "Awesome newsletter",
-     "campaign"=> "Spring 2016",
-     "subject" => "Buy our new product",
-     "senderEmail" => "newsletter@example.org",
-     "sendAs" => "Awesome Company",
-     "from" => "2015-06-12T06:00:00.000",
-     "to" => "2016-06-19T06:00:00.000",
-     "text"=> "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
-     "automaticTime"=> false,
-     "recipientsListId"=>1,
-     "templateUrl" => "http://example.org/newsletter.html",
-     "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
+    "name" => "Awesome newsletter",
+    "campaign"=> "Spring 2016",
+    "subject" => "Buy our new product",
+    "senderEmail" => "newsletter@example.org",
+    "sendAs" => "Awesome Company",
+    "from" => "2018-07-01T00:00:00+00:00",
+    "to" => "2018-07-02T00:00:00+00:00",
+    "text"=> "TmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciw=",
+    "automaticTime"=> false,
+    "recipientsListId"=>1,
+    "templateUrl" => "http://example.org/newsletter.html",
+    "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
 ];
 $newsletter = new \MailQ\Entities\v2\NewsletterEntity($data);
 $mailq->createNewsletter($newsletter);
@@ -103,18 +116,43 @@ $newsletterId = $newsletter->getId();
 
 ```php
 $data = [
- 	"name" => "Awesome newsletter",
-     "campaign" => "Spring 2016",
-     "subject" => "Buy our new product",
-     "senderEmail" => "newsletter@example.org",
-     "sendAs" => "Awesome Company",
-     "from" => "2015-06-12T06:00:00.000",
-     "to" => "2016-06-19T06:00:00.000",
-     "text" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
-     "automaticTime" => false,
-     "recipientsListId" => 1,
-     "templateUrl" => "http://example.org/newsletter.html",
-     "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
+    "id" => 1,
+    "name" => "Awesome newsletter",
+    "campaign" => "Spring 2016",
+    "subject" => "Buy our new product",
+    "senderEmail" => "newsletter@example.org",
+    "sendAs" => "Awesome Company",
+    "from" => "2018-07-01T00:00:00+00:00",
+    "to" => "2018-07-02T00:00:00+00:00",
+    "text" => "TmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciw=",
+    "automaticTime" => false,
+    "recipientsListId" => 1,
+    "templateUrl" => "http://example.org/newsletter.html",
+    "ampTemplateUrl" => "http://example.org/ampNewsletter.html",
+    "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
+];
+$newsletter = new \MailQ\Entities\v2\NewsletterEntity($data);
+$mailq->updateNewsletter($newsletter);
+$newsletterId = $newsletter->getId();
+```
+
+#### Update newsletter in ready state
+
+
+```php
+$data = [
+    "id" => 1,
+    "name" => "Awesome newsletter",
+    "campaign" => "Spring 2016",
+    "subject" => "Buy our new product",
+    "senderEmail" => "newsletter@example.org",
+    "replyToEmail" : "newsletter@example.org",
+    "sendAs" => "Awesome Company",
+    "text" => "TmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciwgbmV3c2xldHRlciw=",
+    "automaticTime" => false,
+    "templateUrl" => "http://example.org/newsletter.html",
+    "ampTemplateUrl" => "http://example.org/ampNewsletter.html",
+    "unsubscribeTemplateUrl" => "http://example.org/unsubscribe.html"
 ];
 $newsletter = new \MailQ\Entities\v2\NewsletterEntity($data);
 $mailq->updateNewsletter($newsletter);
@@ -162,12 +200,13 @@ $mailq->stopNewsletter($newsletterId);
 
 ```php
 $data = [
- 	"name" => "First Notification",
+    "name" => "First Notification",
     "code" => "N1",
     "subject" => "{{orderNumber}} order is ready",
     "sendAs" => "Awesome Company",
     "text" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
     "template" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
+    "ampTemplate" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
     "appliedSenderEmail" => "notification@example.org"
 ];
 $notification = new \MailQ\Entities\v2\NotificationEntity($data);
@@ -179,12 +218,14 @@ $notificationId = $notification->getId();
 
 ```php
 $data = [
- 	"name" => "First Notification",
+    "id" => 1,
+    "name" => "First Notification",
     "code" => "N1",
     "subject" => "{{orderNumber}} order is ready",
     "sendAs" => "Awesome Company",
     "text" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
     "template" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
+    "ampTemplate" => "QWx0ZXJuYXRpdmUgYmFzZTY0IGVtYWlsIHRleHQ=",
     "appliedSenderEmail" => "notification@example.org"
 ];
 $notification = new \MailQ\Entities\v2\NotificationEntity($data);
@@ -206,13 +247,13 @@ $mailq->deleteNotification($notificationId);
 
 #### Send notification e-mail
 
-In data section are all values which will be used in notification. Keys of associative array are variable names and values are values. 
+In data section are all values which will be used in notification. Keys of associative array are variable names and values are values.
 
 ```php
 $data = [
     "recipientEmail" => "recipient@example.org",
     "data" => [
-        "key1" => "value1", 
+        "key1" => "value1",
         "key2" => "value2"
     ],
     "attachments" => [
@@ -231,7 +272,7 @@ $data = [
     ]
 ];
 $notificationId = 1;
-$notificationData = new \MailQ\Entities\v2\NotificationDataEntity($data); 
+$notificationData = new \MailQ\Entities\v2\NotificationDataEntity($data);
 $mailq->sendNotificationEmail($notificationData,$notificationId);
 $notificationDataId = $notificationData->getId();
 ```
@@ -433,7 +474,7 @@ $smsNotificationId = 1;
 $data = [
 	"toNumber" => "+420123456789",
     "data" => [
-        "key1" => "value1", 
+        "key1" => "value1",
         "key2" => "value2"
     ]
 ];
@@ -450,14 +491,14 @@ $data = [
 	"batch" => [
         [    
             "id" => 1,
-            "toNumber" => "+420123456789", 
+            "toNumber" => "+420123456789",
             "data" => [         
                 "text" => "value1"   
             ]
         ],
         [     
             "id" => 2,
-            "toNumber" => "+420123456789", 
+            "toNumber" => "+420123456789",
             "data" => [        
                 "text" => "value2"   
             ]

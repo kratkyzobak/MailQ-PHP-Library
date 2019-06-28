@@ -4,6 +4,9 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property NewsletterEntity[] $newsletters
+ */
 class NewslettersEntity extends BaseEntity
 {
 
@@ -11,13 +14,13 @@ class NewslettersEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var NewsletterEntity
+	 * @var NewsletterEntity[]
 	 * @collection
 	 */
 	private $newsletters;
 
 	/**
-	 * @return NewsletterEntity
+	 * @return NewsletterEntity[]
 	 */
 	public function getNewsletters()
 	{
@@ -25,7 +28,7 @@ class NewslettersEntity extends BaseEntity
 	}
 
 	/**
-	 * @param NewsletterEntity $newsletters
+	 * @param NewsletterEntity[] $newsletters
 	 * @return NewslettersEntity
 	 */
 	public function setNewsletters($newsletters)

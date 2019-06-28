@@ -4,19 +4,22 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property UserEntity[] $username
+ */
 class UsersEntity extends BaseEntity
 {
 
 	/**
 	 * @in
 	 * @out
-	 * @var UserEntity
+	 * @var UserEntity[]
 	 * @collection
 	 */
 	private $users;
 
 	/**
-	 * @return UserEntity
+	 * @return UserEntity[]
 	 */
 	public function getUsers()
 	{
@@ -24,7 +27,7 @@ class UsersEntity extends BaseEntity
 	}
 
 	/**
-	 * @param UserEntity $users
+	 * @param UserEntity[] $users
 	 * @return UsersEntity
 	 */
 	public function setUsers($users)

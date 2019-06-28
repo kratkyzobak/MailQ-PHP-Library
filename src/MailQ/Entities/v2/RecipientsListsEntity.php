@@ -4,6 +4,9 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property RecipientsListEntity[] $recipients
+ */
 class RecipientsListsEntity extends BaseEntity
 {
 
@@ -11,13 +14,13 @@ class RecipientsListsEntity extends BaseEntity
 	/**
 	 * @in
 	 * @out
-	 * @var RecipientsListEntity
+	 * @var RecipientsListEntity[]
 	 * @collection
 	 */
 	private $recipientsLists;
 
 	/**
-	 * @return RecipientsListEntity
+	 * @return RecipientsListEntity[]
 	 */
 	public function getRecipientsLists()
 	{
@@ -25,7 +28,7 @@ class RecipientsListsEntity extends BaseEntity
 	}
 
 	/**
-	 * @param RecipientsListEntity $recipientsLists
+	 * @param RecipientsListEntity[] $recipientsLists
 	 * @return RecipientsListsEntity
 	 */
 	public function setRecipientsLists($recipientsLists)

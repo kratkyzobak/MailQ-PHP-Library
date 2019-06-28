@@ -4,18 +4,21 @@ namespace MailQ\Entities\v2;
 
 use MailQ\Entities\BaseEntity;
 
+/**
+ * @property CampaignEntity[] $campaigns
+ */
 class CampaignsEntity extends BaseEntity {
 
     /**
      * @in
      * @out
-     * @var CampaignEntity 
+     * @var CampaignEntity[]
      * @collection
      */
     private $campaigns;
 
     /**
-     * @return CampaignEntity
+     * @return CampaignEntity[]
      */
     public function getCampaigns()
     {
@@ -23,7 +26,7 @@ class CampaignsEntity extends BaseEntity {
     }
 
     /**
-     * @param CampaignEntity $campaigns
+     * @param CampaignEntity[] $campaigns
      */
     public function setCampaigns($campaigns)
     {

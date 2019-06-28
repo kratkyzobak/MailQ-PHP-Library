@@ -28,7 +28,7 @@ trait RecipientListResource
 		$parameters = [
 			'dont-validate' => !$validate,
 		];
-		$request = Request::post("{$this->getCompanyId()}/recipients-lists/{$recipientsListId}", $parameters);
+		$request = Request::post("{$this->getCompanyId()}/recipients-lists/{$recipientsListId}/recipients", $parameters);
 		$data = $recipients->toArray();
 		$json = Json::encode($data['recipients']);
 		$request->setContent($json);
@@ -60,7 +60,7 @@ trait RecipientListResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/recipients-lists/{$recipientsListId}/unsubscribers");
 		$response = $this->getConnector()->sendRequest($request);
-		return UnsubscribersEntity($response->getContent());
+		return new UnsubscribersEntity($response->getContent(), true);
 	}
 
 	/**
@@ -109,7 +109,7 @@ trait RecipientListResource
 	{
 		$request = Request::put("{$this->getCompanyId()}/recipients-lists/{$recipientsListId}/unsubscribers/{$email}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new UnsubscriberEntity($response->getContent());
+		return new UnsubscriberEntity($response->getContent(), true);
 	}
 
 	/**
@@ -126,7 +126,7 @@ trait RecipientListResource
 	/**
 	 *
 	 * @param int $recipientsListId
-	 * @return RecipientEntity
+	 * @return RecipientsEntity
 	 */
 	public function getRecipients($recipientsListId)
 	{
@@ -135,7 +135,7 @@ trait RecipientListResource
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
 		$json->recipients = $data;
-		return new RecipientsEntity($json);
+		return new RecipientsEntity($json, true);
 	}
 
 	/**
@@ -180,7 +180,7 @@ trait RecipientListResource
 		$data = Json::decode($response->getContent());
 		$json = new stdClass();
 		$json->recipientsLists = $data;
-		return new RecipientsListsEntity($json);
+		return new RecipientsListsEntity($json, true);
 	}
 
 
@@ -193,7 +193,7 @@ trait RecipientListResource
 	{
 		$request = Request::get("{$this->getCompanyId()}/recipients-lists/{$recipientsListId}");
 		$response = $this->getConnector()->sendRequest($request);
-		return new RecipientsListEntity($response->getContent());
+		return new RecipientsListEntity($response->getContent(), true);
 	}
 
 }
